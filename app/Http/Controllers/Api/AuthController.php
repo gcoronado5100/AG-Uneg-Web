@@ -87,8 +87,7 @@ class AuthController extends Controller
     public function register(Request $request)
     {
         $validator = \Validator::make(request()->all(), [
-            'nombre' => 'required|string|max:20',
-            'apellido' => 'required|string|max:20',
+            'name' => 'required|string|max:20',
             'cedula' => 'required|numeric|digits_between:7,8|unique:users,cedula',
             'email' => 'required|string|email|max:255|unique:users',
         ]);

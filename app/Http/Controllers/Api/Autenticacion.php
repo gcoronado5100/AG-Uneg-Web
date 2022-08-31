@@ -20,8 +20,7 @@ class AutenticacionController extends Controller
     public function register (Request $request)
     {
         $userData = $request->validate([
-            'nombre' => 'required|string|max:20',
-            'apellido' => 'required|string|max:20',
+            'name' => 'required|string|max:20',
             'cedula' => 'required|numeric|digits_between:7,8|unique:users,cedula',
             'email' => 'required|string|email|max:255|unique:users',
         ]);
@@ -51,7 +50,7 @@ class AutenticacionController extends Controller
         $token = Auth::user()->createToken('my_awesome_api')->plainTextToken;
 
         return response()->json([
-            'message' => 'Autenticación exitosa. Bienvenido(a) ' . Auth::user()->nombre . ' '. Auth::user()->apellido,
+            'message' => 'Autenticación exitosa. Bienvenido(a) ' . Auth::user()->name,
             'token' => $token
         ]);
     }
