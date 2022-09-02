@@ -2,7 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Api\V1\ConsejoController as ConsejoV1;
+use App\Http\Controllers\Api\V1\ConsejoController;
+use App\Http\Controllers\Api\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,7 +20,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::apiResource('v1/consejo', ConsejoV1::class)
+Route::apiResource('v1/consejo', ConsejoController::class)
       ->only(['index','show', 'destroy'])
       ->middleware('auth:sanctum');
 /*
@@ -44,4 +45,8 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
         Route::post('refresh', 'App\Http\Controllers\Api\AuthController@refresh');
         Route::post('me', 'App\Http\Controllers\Api\AuthController@me');
 
+    });
+
+    Route::group(['middleware' => ['permission:register']], function () {
+        Route::post('register', 'App\Http\Controllers\Api\AuthController@register');
     });

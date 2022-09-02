@@ -19,6 +19,9 @@ class RoleSeeder extends Seeder
         $role1 = Role::create(['name' => 'admin']);
         $role2 = Role::create(['name' => 'user']);
 
-        $permission1 = Permission::create(['name' => 'api/auth/register'])->assignRole($role1);
+        Permission::create(['name' => 'api/auth/register']);
+
+        $role1->givePermissionTo('api/auth/register');
+
     }
 }
