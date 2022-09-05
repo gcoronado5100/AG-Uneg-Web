@@ -70,3 +70,26 @@ php artisan jwt:secret
 php artisan migrate
 php artisan serve
 
+## Registro
+Aplicar un metodo post a la ruta http://localhost:8000/api/auth/register
+En la pestaña Body, colocar los parametros name (nombre y apellido), cedula (valor numerico sin letras) y email
+Y enviar la peticion de registro
+El password sera la cedula ingresada
+
+## Login
+Aplicar un metodo post a la ruta http://localhost:8000/api/auth/login
+En la pestaña Body, colocar los parametros email y password
+Y enviar la peticion de login
+Devuelve un access_token y tiempo de expiracion
+
+## Me
+Aplicar un metodo post a la ruta http://localhost:8000/api/auth/me
+En la pestaña Autorizacion, escoger el Tipo y seleccionar Bearer Token. Y pegar el access_token obtenido de la peticion de login
+Y enviar la peticion de me
+Se obtiene los datos del usuario logeado
+
+## Logout
+Aplicar un metodo post a la ruta http://localhost:8000/api/auth/logout
+En la pestaña Autorizacion, escoger el Tipo y seleccionar Bearer Token. Y pegar el access_token obtenido de la peticion de login
+Y enviar la peticion de logout
+El usuario queda deslogeado del sistema
