@@ -39,14 +39,10 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
 
     ], function ($router) {
 
-        Route::post('register', 'App\Http\Controllers\Api\AuthController@register');
-        Route::post('login', 'App\Http\Controllers\Api\AuthController@login');
-        Route::post('logout', 'App\Http\Controllers\Api\AuthController@logout');
-        Route::post('refresh', 'App\Http\Controllers\Api\AuthController@refresh');
-        Route::post('me', 'App\Http\Controllers\Api\AuthController@me');
+        Route::post('register', 'App\Http\Controllers\Api\AuthController@register')->name('register');
+        Route::post('login', 'App\Http\Controllers\Api\AuthController@login')->name('login');
+        Route::post('logout', 'App\Http\Controllers\Api\AuthController@logout')->name('logout');
+        Route::post('refresh', 'App\Http\Controllers\Api\AuthController@refresh')->name('refresh');
+        Route::post('me', 'App\Http\Controllers\Api\AuthController@me')->name('me');
 
-    });
-
-    Route::group(['middleware' => ['permission:register']], function () {
-        Route::post('register', 'App\Http\Controllers\Api\AuthController@register');
     });
