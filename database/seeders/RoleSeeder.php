@@ -16,10 +16,12 @@ class RoleSeeder extends Seeder
      */
     public function run()
     {
-        $role1 = Role::create(['name' => 'Admin']);
-        $role2 = Role::create(['name' => 'User']);
+        $role1 = Role::create(['name' => 'admin']);
+        $role2 = Role::create(['name' => 'user']);
 
-        Permission::create(['name' => 'register'])->assignRole($role1);
+        Permission::create(['name' => 'api/auth/register']);
+
+        $role1->givePermissionTo('api/auth/register');
 
     }
 }
