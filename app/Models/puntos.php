@@ -16,4 +16,14 @@ class puntos extends Model
         'estado_id',
         'ultima_actualizacion'
     ];
+
+    public function agenda()
+    {
+        return $this->belongsTo("App\Models\agenda", "agenda_id", "id");
+    }
+
+    public function estados()
+    {
+        return $this->belongsTo("App\Models\estados", "estado_id", "id");
+    }
 }

@@ -12,4 +12,14 @@ class consejo_usuario extends Model
         'user_id',
         'consejo_id'
     ];
+
+    public function User()
+    {
+        return $this->belongsTo("App\Models\User", "user_id", "id");
+    }
+
+    public function Consejo()
+    {
+        return $this->belongsTo("App\Models\Consejo", "consejo_id", "id");
+    }
 }

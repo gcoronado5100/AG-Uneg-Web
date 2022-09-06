@@ -12,4 +12,9 @@ class Consejo extends Model
         'titulo',
         'user_id'
     ];
+
+    public function User()
+    {
+        return $this->belongsTo("App\Models\User", "user_id", "id");
+    }
 }

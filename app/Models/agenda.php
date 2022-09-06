@@ -14,4 +14,9 @@ class agenda extends Model
         'fecha_apertura',
         'fecha_cierre'
     ];
+
+    public function Consejo()
+    {
+        return $this->belongsTo("App\Models\Consejo", "consejo_id", "id");
+    }
 }

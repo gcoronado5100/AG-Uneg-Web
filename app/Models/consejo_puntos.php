@@ -12,4 +12,14 @@ class consejo_puntos extends Model
         'consejo_id',
         'punto_id'
     ];
+
+    public function Consejo()
+    {
+        return $this->belongsTo("App\Models\Consejo", "consejo_id", "id");
+    }
+
+    public function puntos()
+    {
+        return $this->belongsTo("App\Models\puntos", "punto_id", "id");
+    }
 }

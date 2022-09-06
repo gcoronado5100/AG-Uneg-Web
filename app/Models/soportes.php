@@ -12,4 +12,9 @@ class soportes extends Model
         'soporte_url',
         'punto_id'
     ];
+
+    public function puntos()
+    {
+        return $this->belongsTo("App\Models\puntos", "punto_id", "id");
+    }
 }
