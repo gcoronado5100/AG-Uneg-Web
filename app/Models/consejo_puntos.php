@@ -7,5 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class consejo_puntos extends Model
 {
-    use HasFactory;
+    public $table = 'consejo_punto';
+    protected $fillable = [
+        'consejo_id',
+        'punto_id'
+    ];
 }

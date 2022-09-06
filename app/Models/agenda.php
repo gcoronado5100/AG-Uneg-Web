@@ -7,5 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class agenda extends Model
 {
-    use HasFactory;
+    protected $table = 'agendas';
+    protected $fillable = [
+        'titulo',
+        'consejo_id',
+        'fecha_apertura',
+        'fecha_cierre'
+    ];
 }

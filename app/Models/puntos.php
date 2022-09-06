@@ -7,5 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class puntos extends Model
 {
-    use HasFactory;
+    public $table = 'puntos';
+    protected $fillable = [
+        'titulo',
+        'descripcion',
+        'acuerdo_instrucciones',
+        'agenda_id',
+        'estado_id',
+        'ultima_actualizacion'
+    ];
 }

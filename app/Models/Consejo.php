@@ -7,8 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Consejo extends Model
 {
-    use HasFactory;
-
     protected $table = 'consejos';
-    
+    protected $fillable = [
+        'titulo',
+        'user_id'
+    ];
 }

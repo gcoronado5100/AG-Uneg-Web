@@ -7,5 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class soportes extends Model
 {
-    use HasFactory;
+    public $table = 'soportes';
+    protected $fillable = [
+        'soporte_url',
+        'punto_id'
+    ];
 }
