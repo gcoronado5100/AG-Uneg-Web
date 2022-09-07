@@ -1,0 +1,18 @@
+name: Deploy to Hostinger
+
+on: 
+  push:
+    branch:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    name: Haciendo Deploy
+    steps: 
+      - uses: actions/checkout@v1
+      - name: instalando php y composer
+        uses: MilesChou/composer-action@master
+        with:
+          args: install --ignore-platform-reqs --prefer-dist --no-ansi --no-interaction --no-progress --no-scripts
+    
