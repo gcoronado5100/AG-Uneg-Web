@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('puntos', function (Blueprint $table) {
             $table->id();
             $table->string('titulo');
-            $table->string('descripcion');
+            $table->text('descripcion');
             $table->string('acuerdo_instrucciones');
             $table->unsignedBigInteger('agenda_id');
             $table->foreign('agenda_id')->references('id')->on('agendas');
@@ -34,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('puntos'); 
+        Schema::dropIfExists('puntos');
     }
 };

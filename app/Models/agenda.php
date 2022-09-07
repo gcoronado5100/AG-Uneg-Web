@@ -9,7 +9,7 @@ class Agenda extends Model
 {
     use HasFactory;
 
-    protected $table = 'agenda';
+    protected $table = 'agendas';
     protected $primaryKey = 'id';
 
     protected $fillable = [
@@ -22,6 +22,6 @@ class Agenda extends Model
 
     public function consejo()
     {
-        
+
     }
 }
