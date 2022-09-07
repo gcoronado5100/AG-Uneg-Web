@@ -15,4 +15,16 @@ jobs:
         uses: MilesChou/composer-action@master
         with:
           args: install --ignore-platform-reqs --prefer-dist --no-ansi --no-interaction --no-progress --no-scripts
+      - name: instalando node v12
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+      - run: npm install
+      - run: npm run production
+      - run: rm -rf .git
+      - run: rm -rf .github
+      - run: 'echo "$SSH_KEY" > key'
+        shell: bash
+        env:
+          SSH_KEY: ${{ secrets.SERVER_SSH_KEY }}
     
