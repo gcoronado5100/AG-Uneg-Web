@@ -8,7 +8,7 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    name: Haciendo Deploy
+    name: Haciendo Deploy 1
     steps: 
       - uses: actions/checkout@v1
       - name: instalando php y composer
