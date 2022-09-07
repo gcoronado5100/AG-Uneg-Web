@@ -10,16 +10,16 @@ jobs:
     runs-on: ubuntu-latest
     name: Haciendo Deploy 1
     steps: 
-      - uses: actions/checkout@v2
-      - name: instalando php y composer
-        uses: MilesChou/composer-action@master
-        with:
-          args: install --ignore-platform-reqs --prefer-dist --no-ansi --no-interaction --no-progress --no-scripts
-      - name: instalando node v12
-        uses: actions/setup-node@v1
-        with:
-          node-version: 12
-      - run: npm install
+      # - uses: actions/checkout@v2
+      # - name: instalando php y composer
+      #   uses: MilesChou/composer-action@master
+      #   with:
+      #     args: install --ignore-platform-reqs --prefer-dist --no-ansi --no-interaction --no-progress --no-scripts
+      # - name: instalando node v12
+      #   uses: actions/setup-node@v1
+      #   with:
+      #     node-version: 12
+      # - run: npm install
       # - run: npm run production
       - run: rm -rf .git
       - run: rm -rf .github
