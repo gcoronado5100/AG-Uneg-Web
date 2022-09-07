@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers;
 
+use App\Models\Estado;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
-class UserController extends Controller
+class EstadoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,17 +14,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return Estado::all();
     }
 
     /**
@@ -35,51 +25,45 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $estado = Estado::create($request->all());
+        return $estado;
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Estado  $estado
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+        return Estado::find($id);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Estado  $estado
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        //
+        $estado = Estado::find($id);
+        $estado->update($request->all());
+        return $estado;
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Estado  $estado
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        //
+        $estado = Estado::find($id);
+        $estado->delete();
+        return $estado;
     }
 }

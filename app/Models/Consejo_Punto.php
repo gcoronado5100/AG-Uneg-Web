@@ -5,22 +5,26 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Consejo extends Model
+class Consejo_Punto extends Model
 {
     use HasFactory;
 
-    protected $table = 'consejos';
+    protected $table = 'consejo_puntos';
     protected $primaryKey = 'id';
 
     protected $fillable = [
         'id',
-        'titulo',
-        'user_id',
+        'consejo_is',
+        'punto_id',
     ];
 
-    public function user()
+    public function consejo()
     {
-        return $this->hasMany(User::class, 'user_id');
+
     }
 
+    public function punto()
+    {
+
+    }
 }

@@ -5,22 +5,31 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Consejo extends Model
+class Punto extends Model
 {
     use HasFactory;
 
-    protected $table = 'consejos';
+    protected $table = 'puntos';
     protected $primaryKey = 'id';
 
     protected $fillable = [
         'id',
         'titulo',
-        'user_id',
+        'descripcion',
+        'acuerdo_instrucciones',
+        'agenda_id',
+        'estado_id',
+        'ultima_actualizacion'
     ];
 
-    public function user()
+    public function agenda()
     {
-        return $this->hasMany(User::class, 'user_id');
+
     }
 
+    public function estado()
+    {
+
+    }
+    
 }
