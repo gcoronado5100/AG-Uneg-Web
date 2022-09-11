@@ -5,6 +5,8 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
+use  Database\Seeders\PermisoRoleSeeder;
+
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -14,12 +16,15 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(RoleSeeder::class);
+        $this->call([
+            PermisoRoleSeeder::class,
+            ConsejoRoleUserSeeder::class        
+        ]);
 
-        $admin = \App\Models\User::factory(10)->create();
-        $user = \App\Models\User::factory(10)->create();
+        //$admin = \App\Models\User::factory(10)->create();
+        //$user = \App\Models\User::factory(10)->create();
 
-        \App\Models\Consejo::factory(20)->create();
+        //\App\Models\Consejo::factory(20)->create();
 
     }
 }

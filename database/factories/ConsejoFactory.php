@@ -18,7 +18,6 @@ class ConsejoFactory extends Factory
     {
         return [
             'titulo' => $this->faker->name(),
-            'user_id' => $this->faker->numberBetween(1, 10),
         ];
     }
 }

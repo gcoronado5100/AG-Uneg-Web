@@ -13,10 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('consejos', function (Blueprint $table) {
+        Schema::create('permiso_role', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre')->unique();
-            $table->mediumText("descripcion");
+            $table->unsignedBigInteger("permiso_id");
+            $table->unsignedBigInteger("role_id");
+
+            $table->foreign("permiso_id")->references("id")->on("permisos")->onDelete("cascade");
+            $table->foreign("role_id")->references("id")->on("roles")->onDelete("cascade");
             $table->timestamps();
         });
     }
@@ -28,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('consejos');
+        Schema::dropIfExists('permiso_role');
     }
 };

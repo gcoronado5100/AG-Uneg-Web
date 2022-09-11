@@ -10,6 +10,10 @@ use Laravel\Sanctum\HasApiTokens;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 use Spatie\Permission\Traits\HasRoles;
 
+
+use App\Models\Consejo;
+use App\Models\Role;
+
 class User extends Authenticatable implements JWTSubject
 {
     use HasApiTokens, HasFactory, Notifiable, HasRoles;
@@ -43,9 +47,15 @@ class User extends Authenticatable implements JWTSubject
         return [];
     }
 
-    public function consejo()
+    public function consejos()
     {
-        return $this->hasMany(Consejo::class, 'user_id');
+        return $this->belongsToMany(Consejo::class, 'consejo_role_user');
     }
+
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class, 'consejo_role_user');
+    }
+
 
 }

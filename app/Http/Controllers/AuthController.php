@@ -3,9 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Validator;
+
+use Illuminate\Support\Facades\DB;
+
 
 
 class AuthController extends Controller
@@ -17,7 +21,7 @@ class AuthController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['login', 'register']]);
+        $this->middleware('auth:api', ['except' => ['login', ]]);
     }
 
     /**
@@ -86,9 +90,18 @@ class AuthController extends Controller
 
     public function register(Request $request)
     {
-        $validator = \Validator::make(request()->all(), [
-            'name' => 'required|string|max:20',
-            'cedula' => 'required|numeric|digits_between:7,8|unique:users,cedula',
+
+        if(!userCan(auth()->user()['id'],"agregar usuario")){
+            return response()->json(
+                [
+                    'message' => 'No tienes el permiso para hacer esto',
+                ]
+                ,401);
+        }
+
+        $validator = Validator::make(request()->all(), [
+            'name' => 'required|string|max:50',
+            'cedula' => 'required|numeric|digits_between:6,8|unique:users,cedula',
             'email' => 'required|string|email|max:255|unique:users',
         ]);
 
