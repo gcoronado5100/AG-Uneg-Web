@@ -25,8 +25,34 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $user = User::create($request->all());
-        return $user;
+        if(!userCan(auth()->user()['id'],"agregar usuario")){
+            return response()->json(
+                [
+                    'message' => 'No tienes el permiso para hacer esto',
+                ]
+                ,401);
+        }
+
+        $validator = Validator::make(request()->all(), [
+            'name' => 'required|string|max:50',
+            'cedula' => 'required|numeric|digits_between:6,8|unique:users,cedula',
+            'email' => 'required|string|email|max:255|unique:users',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json($validator->errors()->toJson(), 400);
+        }
+
+        $user = User::create(array_merge (
+            $validator->validate(),
+            ['password' => bcrypt($request->cedula)]
+        ));
+
+        return response()->json([
+            'message' => 'User created successfully',
+            'data' => $user
+        ]);
+    
     }
 
     /**
@@ -49,6 +75,14 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if(auth()->user()['id']!=$id && !userCan(auth()->user()['id'],"actualizar usuario")){
+            return response()->json(
+                [
+                    'message' => 'No tienes el permiso para hacer esto',
+                ]
+                ,401);
+        }
+
         $user = User::find($id);
         $user->update($request->all());
         return $user;
@@ -62,8 +96,18 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
+
+        if(auth()->user()['id']!=$id && !userCan(auth()->user()['id'],"eliminar usuario")){
+            return response()->json(
+                [
+                    'message' => 'No tienes el permiso para hacer esto',
+                ]
+                ,401);
+        }
+
         $user = User::find($id);
         $user->delete();
         return $user;
     }
+
 }

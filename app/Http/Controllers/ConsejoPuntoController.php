@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Consejo_Punto;
+use App\Models\ConsejoPunto;
 use Illuminate\Http\Request;
 
 class ConsejoPuntoController extends Controller
@@ -14,7 +14,7 @@ class ConsejoPuntoController extends Controller
      */
     public function index()
     {
-        return Consejo_Punto::all();
+        return ConsejoPunto::all();
     }
 
     /**
@@ -55,12 +55,12 @@ class ConsejoPuntoController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Consejo_Punto  $consejo_Punto
+     * @param  \App\Models\ConsejoPunto  $consejo_Punto
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $consejo_punto = Consejo_Punto::find($id);
+        $consejo_punto = ConsejoPunto::find($id);
         $consejo_punto->delete();
     }
 }

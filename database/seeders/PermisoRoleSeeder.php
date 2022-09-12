@@ -45,8 +45,8 @@ class PermisoRoleSeeder extends Seeder
         //agregar o eliminar usuarios   
         $permisosParticulares=[
             "máster" => 
-                    ['agregar rol',
-                    'eliminar rol',
+                    ['asignar rol',
+                    'desasignar rol',
                     'agregar usuario',
                     'eliminar usuario',
                     'agregar consejo',

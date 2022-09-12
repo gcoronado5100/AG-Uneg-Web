@@ -14,3 +14,18 @@ function userCan($userId,$permiso){
         return True;
     }
 }
+
+function userIs($userId,$rol){
+    if(DB::table('users')
+            ->join('consejo_role_user', 'users.id', '=', 'consejo_role_user.user_id')
+            ->join('roles', 'consejo_role_user.id', '=', 'roles.id')
+            ->where('users.id',$userId)
+            ->where('roles.nombre', $rol)
+            ->doesntExist()
+    ){
+        return False;
+
+    }else {
+        return True;
+    }
+}

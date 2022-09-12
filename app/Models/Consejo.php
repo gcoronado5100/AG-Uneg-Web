@@ -17,11 +17,6 @@ class Consejo extends Model
         'titulo'
     ];
 
-    // public function user()
-    // {
-    //     return $this->hasMany(User::class, 'user_id');
-    // }
-
     public function users()
     {
         return $this->belongsToMany(Users::class,'consejo_rol_user');

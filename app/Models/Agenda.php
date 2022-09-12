@@ -20,8 +20,5 @@ class Agenda extends Model
         'fecha_cierre',
     ];
 
-    public function consejo()
-    {
 
-    }
 }

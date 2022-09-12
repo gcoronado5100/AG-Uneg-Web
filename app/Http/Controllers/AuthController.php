@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\ConsejoRoleUser;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -34,7 +35,7 @@ class AuthController extends Controller
         $credentials = request(['email', 'password']);
 
         if (! $token = auth()->attempt($credentials)) {
-            return response()->json(['error' => 'Unauthorized'], 401);
+            return response()->json(['message' => 'Unauthorized'], 401);
         }
 
         return $this->respondWithToken($token);
@@ -47,7 +48,25 @@ class AuthController extends Controller
      */
     public function me()
     {
-        return response()->json(auth()->user());
+        $consejoRoleUser=ConsejoRoleUser::select(
+            'consejo_role_user.consejo_id',            
+            'consejos.nombre AS consejo_nombre',
+            'consejo_role_user.role_id',
+            'roles.nombre AS role_nombre',
+            'users.name AS user_name',
+            "users.cedula",
+            "users.email",
+            "users.created_at",
+            "users.updated_at"
+        )
+        ->leftJoin('consejos', 'consejo_role_user.consejo_id', '=', 'consejos.id')
+        ->join('roles', 'consejo_role_user.role_id', '=', 'roles.id')
+        ->join('users', 'consejo_role_user.user_id', '=', 'users.id')->where("users.id",auth()->user()['id'])->get();
+
+        return response()->json([
+            "message"=> "se logro recuperar los datos del usuario de forma satisfactoria",
+            "data"=>$consejoRoleUser
+        ]);
     }
 
     /**
@@ -116,7 +135,7 @@ class AuthController extends Controller
 
         return response()->json([
             'message' => 'User created successfully',
-            'user' => $user
+            'data' => $user
         ]);
     }
 }

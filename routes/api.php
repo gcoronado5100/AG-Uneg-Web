@@ -20,34 +20,23 @@ use App\Http\Controllers\ConsejoRoleUserController;
 
 //-------------------------------
 
-    Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-        return $request->user();
-    });
-
     //MODELOS
-    Route::apiResource('/agenda', AgendaController::class)->middleware('auth:sanctum');
-    Route::apiResource('/consejo', ConsejoController::class)->middleware('auth:sanctum');
+    Route::apiResource('/agendas', AgendaController::class)->middleware('auth:sanctum');
+    Route::apiResource('/consejos', ConsejoController::class)->middleware('auth:sanctum');
     Route::apiResource('/consejo_punto', ConsejoPuntoController::class)->middleware('auth:sanctum');
     
-    Route::apiResource('/estado', EstadoController::class)->middleware('auth:sanctum');
-    Route::apiResource('/punto', PuntoController::class)->middleware('auth:sanctum');
-    Route::apiResource('/soporte', SoporteController::class)->middleware('auth:sanctum');
-    Route::apiResource('/user', UserController::class)->middleware('auth:sanctum');
+    Route::apiResource('/estados', EstadoController::class)->middleware('auth:sanctum');
+    Route::apiResource('/puntos', PuntoController::class)->middleware('auth:sanctum');
+    Route::apiResource('/soportes', SoporteController::class)->middleware('auth:sanctum');
+    Route::apiResource('/users', UserController::class)->middleware('auth:sanctum');
    
-    Route::apiResource('/consejo-role-user', ConsejoRoleUserController::class)->middleware('api');
+    Route::apiResource('/consejo-role-user', ConsejoRoleUserController::class)->middleware('auth:api');
 
     //AUTH
-    Route::group(['middleware' => 'api', 'prefix' => 'auth'], function ($router) {
+    Route::group(['prefix' => 'auth'], function ($router) {
         Route::post('register', [AuthController::class, 'register']);
         Route::post('login', [AuthController::class, 'login']);
         Route::post('logout', [AuthController::class, 'logout']);
         Route::post('refresh', [AuthController::class, 'refresh']);
         Route::post('me', [AuthController::class, 'me']);
-    });
-
-    Route::get('agregar', function (Request $request) {
-
-
-        return (Role::all()::with('permisos'))->permisos()->orderBy('nombre')->get();
-
     });
