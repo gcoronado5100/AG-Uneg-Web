@@ -35,7 +35,7 @@ class AuthController extends Controller
         $credentials = request(['email', 'password']);
 
         if (! $token = auth()->attempt($credentials)) {
-            return response()->json(['message' => 'Unauthorized'], 401);
+            return response()->json(['message' => 'no se pudo iniciar sesion tus datos son incorrectos'], 401);
         }
         
         $consejoRoleUser=ConsejoRoleUser::select(
@@ -43,24 +43,21 @@ class AuthController extends Controller
             'consejos.nombre AS consejo_nombre',
             'consejo_role_user.role_id',
             'roles.nombre AS role_nombre',
-            'users.name AS user_name',
-            "users.cedula",
-            "users.email",
-            "users.created_at",
-            "users.updated_at"
         )
         ->leftJoin('consejos', 'consejo_role_user.consejo_id', '=', 'consejos.id')
         ->join('roles', 'consejo_role_user.role_id', '=', 'roles.id')
         ->join('users', 'consejo_role_user.user_id', '=', 'users.id')->where("users.id",auth()->user()['id'])->get();
 
         return response()->json(
-            array_merge([
-            "data"=>$consejoRoleUser],
+            array_merge(
+            ["informacion personal "=>auth()->user()],
             [
             'access_token' => $token,
             'token_type' => 'bearer',
-            'expires_in' => auth()->factory()->getTTL() * 60
-            ])
+            'expires_in' => auth()->factory()->getTTL() * 60,
+            "roles del usuario"=>$consejoRoleUser
+            ]
+            )
         );
     }
 
@@ -76,20 +73,21 @@ class AuthController extends Controller
             'consejos.nombre AS consejo_nombre',
             'consejo_role_user.role_id',
             'roles.nombre AS role_nombre',
-            'users.name AS user_name',
-            "users.cedula",
-            "users.email",
-            "users.created_at",
-            "users.updated_at"
         )
         ->leftJoin('consejos', 'consejo_role_user.consejo_id', '=', 'consejos.id')
         ->join('roles', 'consejo_role_user.role_id', '=', 'roles.id')
         ->join('users', 'consejo_role_user.user_id', '=', 'users.id')->where("users.id",auth()->user()['id'])->get();
 
-        return response()->json([
-            "message"=> "se logro recuperar los datos del usuario de forma satisfactoria",
-            "data"=>$consejoRoleUser
-        ]);
+        return response()->json(
+            array_merge(
+            ["message"=> "se logro recuperar los datos del usuario de forma satisfactoria"],
+            ["informacion personal "=>auth()->user()],
+            [
+            "roles del usuario"=>$consejoRoleUser
+            ]
+            )
+        );
+
     }
 
     /**

@@ -21,15 +21,15 @@ use App\Http\Controllers\ConsejoRoleUserController;
 //-------------------------------
 
     //MODELOS
-    Route::apiResource('/agendas', AgendaController::class)->middleware('auth:sanctum');
-    Route::apiResource('/consejos', ConsejoController::class)->middleware('auth:sanctum');
-    Route::apiResource('/consejo_punto', ConsejoPuntoController::class)->middleware('auth:sanctum');
+    Route::apiResource('/agendas', AgendaController::class)->middleware('auth:api');
+    Route::apiResource('/consejos', ConsejoController::class)->middleware('auth:api');
+    Route::apiResource('/consejo_punto', ConsejoPuntoController::class)->middleware('aauth:api');
     
-    Route::apiResource('/estados', EstadoController::class)->middleware('auth:sanctum');
-    Route::apiResource('/puntos', PuntoController::class)->middleware('auth:sanctum');
-    Route::apiResource('/soportes', SoporteController::class)->middleware('auth:sanctum');
-    Route::apiResource('/users', UserController::class)->middleware('auth:sanctum');
-   
+    Route::apiResource('/estados', EstadoController::class)->middleware('auth:api');
+    Route::apiResource('/puntos', PuntoController::class)->middleware('auth:api');
+    Route::apiResource('/soportes', SoporteController::class)->middleware('auth:api');
+    
+    Route::apiResource('/users', UserController::class)->middleware('auth:api');
     Route::apiResource('/consejo-role-user', ConsejoRoleUserController::class)->middleware('auth:api');
 
     //AUTH

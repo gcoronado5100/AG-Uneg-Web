@@ -5,6 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 
+use Validator;
+
+use Illuminate\Support\Facades\DB;
+
+
 class UserController extends Controller
 {
     /**
@@ -97,6 +102,16 @@ class UserController extends Controller
     public function destroy($id)
     {
 
+
+        $validator = Validator::make(["id"=>$id], [
+            'id' => 'required|numeric|exists:users,id',
+
+        ]);
+        
+        if ($validator->fails()) {
+            return response()->json($validator->errors()->toJson(), 400);
+        }
+
         if(auth()->user()['id']!=$id && !userCan(auth()->user()['id'],"eliminar usuario")){
             return response()->json(
                 [
@@ -105,9 +120,14 @@ class UserController extends Controller
                 ,401);
         }
 
-        $user = User::find($id);
-        $user->delete();
-        return $user;
+
+        DB::table('users')->where('id',$id)->delete();
+
+        return response()->json(
+            [
+                'message' => 'Usuario borrado'
+            ]
+            );
     }
 
 }
