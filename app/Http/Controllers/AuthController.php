@@ -37,8 +37,31 @@ class AuthController extends Controller
         if (! $token = auth()->attempt($credentials)) {
             return response()->json(['message' => 'Unauthorized'], 401);
         }
+        
+        $consejoRoleUser=ConsejoRoleUser::select(
+            'consejo_role_user.consejo_id',            
+            'consejos.nombre AS consejo_nombre',
+            'consejo_role_user.role_id',
+            'roles.nombre AS role_nombre',
+            'users.name AS user_name',
+            "users.cedula",
+            "users.email",
+            "users.created_at",
+            "users.updated_at"
+        )
+        ->leftJoin('consejos', 'consejo_role_user.consejo_id', '=', 'consejos.id')
+        ->join('roles', 'consejo_role_user.role_id', '=', 'roles.id')
+        ->join('users', 'consejo_role_user.user_id', '=', 'users.id')->where("users.id",auth()->user()['id'])->get();
 
-        return $this->respondWithToken($token);
+        return response()->json(
+            array_merge([
+            "data"=>$consejoRoleUser],
+            [
+            'access_token' => $token,
+            'token_type' => 'bearer',
+            'expires_in' => auth()->factory()->getTTL() * 60
+            ])
+        );
     }
 
     /**
