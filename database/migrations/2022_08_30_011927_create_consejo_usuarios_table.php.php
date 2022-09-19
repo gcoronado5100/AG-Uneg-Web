@@ -16,10 +16,11 @@ return new class extends Migration
         Schema::create('consejo_usuarios', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
             $table->unsignedBigInteger('consejo_id');
-            $table->foreign('consejo_id')->references('id')->on('consejos');
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('consejo_id')->references('id')->on('consejos');
         });
     }
 

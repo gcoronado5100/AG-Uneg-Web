@@ -15,17 +15,16 @@ return new class extends Migration
     {
         Schema::create('puntos', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('agenda_id');
-            $table->foreign('agenda_id')->references('id')->on('agendas');
-            $table->unsignedBigInteger('estado_id');
-            $table->foreign('estado_id')->references('id')->on('estados');
-            
             $table->string('titulo');
             $table->text('descripcion');
             $table->string('acuerdo_instrucciones');
-            
             $table->date('fecha_ultima_actualizacion');
+            $table->unsignedBigInteger('agenda_id');
+            $table->unsignedBigInteger('estado_id');
             $table->timestamps();
+
+            $table->foreign('agenda_id')->references('id')->on('agendas');
+            $table->foreign('estado_id')->references('id')->on('estados');
         });
     }
 

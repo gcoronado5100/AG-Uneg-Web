@@ -16,10 +16,11 @@ return new class extends Migration
         Schema::create('consejo_puntos', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('consejo_id');
-            $table->foreign('consejo_id')->references('id')->on('consejos');
             $table->unsignedBigInteger('punto_id');
-            $table->foreign('punto_id')->references('id')->on('puntos');
             $table->timestamps();
+
+            $table->foreign('consejo_id')->references('id')->on('consejos');
+            $table->foreign('punto_id')->references('id')->on('puntos');
         });
     }
 

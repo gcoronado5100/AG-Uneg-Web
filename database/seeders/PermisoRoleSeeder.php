@@ -34,44 +34,44 @@ class PermisoRoleSeeder extends Seeder
         //Presidente
         //mismo secretario
         //edita consejo
-        //agregar secretario dice de los que pertenecen al consejo 
+        //agregar secretario dice de los que pertenecen al consejo
         //pero creo que deberia de ser como hace el secretario
 
         //master
         //mismo presidente
-        //agrega o elimina rol para un usuario 
+        //agrega o elimina rol para un usuario
         //independientemente de si pertenece o no a su consejo
         //agrega eliminar consejos
-        //agregar o eliminar usuarios   
+        //agregar o eliminar usuarios
         $permisosParticulares=[
-            "máster" => 
+            "master" =>
                     ['asignar rol',
                     'desasignar rol',
                     'agregar usuario',
                     'eliminar usuario',
                     'agregar consejo',
                     'eliminar consejo'
-                    ], 
-            "presidente" => 
+                    ],
+            "presidente" =>
                     ['agregar secretario',
                     'editar consejo'
-                    ], 
-            "secretario" => 
+                    ],
+            "secretario" =>
                     ['agregar agenda',
                     'editar agenda',
                     'agregar consejero',
                     'eliminar consejero'
-                    ], 
-            "consejero" => 
+                    ],
+            "consejero" =>
                     ['agregar punto',
-                    ], 
+                    ],
 
 
         ];
 
         $rolesYPermisos=[
-            "máster" => array_merge(
-                $permisosParticulares['máster'],
+            "master" => array_merge(
+                $permisosParticulares['master'],
                 $permisosParticulares['presidente'],
                 $permisosParticulares['secretario'],
                 $permisosParticulares['consejero']
@@ -103,39 +103,39 @@ class PermisoRoleSeeder extends Seeder
             );
 
             $indicesRolesDB[$rol]=$indiceRolDB;
-            
+
             foreach ($permisos as $permiso) {
-    
+
                 Permiso::create(
                     ["nombre"=>$permiso]
                 );
-                
+
                 $indicesPermisosDB[$permiso]=$indicePermisoDB;
 
                 $indicePermisoDB++;
-                
+
             }
 
-            $indiceRolDB++;           
+            $indiceRolDB++;
         }
 
 
         foreach ($rolesYPermisos as $rol => $permisos) {
-          
+
             $rol=Role::find($indicesRolesDB[$rol]);
 
             foreach ($permisos as $permiso) {
 
                 $rol->permisos()->attach($indicesPermisosDB[$permiso]);
-                
-               
+
+
             }
-           
+
         }
 
-       
 
-        
+
+
 
     }
 }

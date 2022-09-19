@@ -17,8 +17,9 @@ return new class extends Migration
             $table->id();
             $table->string('soporte_url')->unique();
             $table->unsignedBigInteger('punto_id');
-            $table->foreign('punto_id')->references('id')->on('puntos');
             $table->timestamps();
+
+            $table->foreign('punto_id')->references('id')->on('puntos');
         });
     }
 
