@@ -18,7 +18,8 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             PermisoRoleSeeder::class,
-            ConsejoRoleUserSeeder::class        
+            ConsejoRoleUserSeeder::class,
+            consejoSeeder::class
         ]);
 
         //$admin = \App\Models\User::factory(10)->create();

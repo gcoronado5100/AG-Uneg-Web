@@ -19,6 +19,4 @@ class Agenda extends Model
         'fecha_apertura',
         'fecha_cierre',
     ];
-
-
 }

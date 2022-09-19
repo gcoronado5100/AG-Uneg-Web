@@ -14,12 +14,12 @@ class Consejo extends Model
 
     protected $fillable = [
         'id',
-        'titulo'
+        'titulo',
+        'descripcion'
     ];
 
     public function users()
     {
-        return $this->belongsToMany(Users::class,'consejo_rol_user');
+        return $this->belongsToMany(Users::class, 'consejo_rol_user');
     }
-
 }
