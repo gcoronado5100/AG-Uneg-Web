@@ -14,17 +14,15 @@ class Consejo_Punto extends Model
 
     protected $fillable = [
         'id',
-        'consejo_is',
+        'consejo_id',
         'punto_id',
     ];
 
     public function consejo()
     {
-
     }
 
     public function punto()
     {
-
     }
 }

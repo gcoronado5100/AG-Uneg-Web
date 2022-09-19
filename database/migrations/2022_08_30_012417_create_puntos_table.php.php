@@ -19,11 +19,11 @@ return new class extends Migration
             $table->foreign('agenda_id')->references('id')->on('agendas');
             $table->unsignedBigInteger('estado_id');
             $table->foreign('estado_id')->references('id')->on('estados');
-            
+
             $table->string('titulo');
             $table->text('descripcion');
-            $table->string('acuerdo_instrucciones');
-            
+            $table->text('acuerdo_instrucciones');
+
             $table->date('fecha_ultima_actualizacion');
             $table->timestamps();
         });

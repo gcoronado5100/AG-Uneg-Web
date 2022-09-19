@@ -28,12 +28,6 @@ class ConsejoRoleUserSeeder extends Seeder
 
             ],
 
-            [
-                'name' => 'Oscar',
-                'cedula' => 123456,
-                'email' => 'Oscars@gmail.com',
-                'password' => bcrypt(123456),
-            ],
         ];
 
         $consejos = [
@@ -123,7 +117,7 @@ class ConsejoRoleUserSeeder extends Seeder
 
         $indicesUsersDB;
         $indicesConsejosDB;
-        $$indiceUserDB = 1;
+        $indiceUserDB = 1;
         $indiceConsejoDB = 1;
 
         foreach ($usuariosMaster as $user) {

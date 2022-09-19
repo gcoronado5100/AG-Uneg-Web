@@ -16,25 +16,54 @@ class consejoSeeder extends Seeder
     public function run()
     {
         consejo::create([
-            'id' => 1,
-            'titulo' => 'Transporte',
-            'descripción' => 'Este consejo se encarga de gestionar y organizar todo lo referencte
-             al area de transporte de la UNEG',
-        ]);
-
-        consejo::create([
-            'id' => 2,
-            'titulo' => 'Presupuesto',
+            'nombre' => ' Consejo de Transporte',
             'descripcion' => 'Este consejo se encarga de gestionar y organizar todo lo referencte
-             al area salarial de la UNEG',
+             al area de transporte de la Universidad Nacional Experimental de Guayana',
         ]);
 
         consejo::create([
-            'id' => 3,
-            'titulo' => 'Capacitación académica profesores',
+            'nombre' => 'Concejo de Presupuesto',
+            'descripcion' => 'Este consejo se encarga de gestionar y organizar todo lo referencte
+             al area salarial de la Universidad Nacional Experimental de Guayana',
+        ]);
+
+        consejo::create([
+            'nombre' => 'Consejo de Capacitación académica a profesores',
             'descripcion' => 'Este consejo se encarga de gestionar y organizar todo lo referencte
              al area de capacitación para el desarrollo de las nuevas habilidades en el hámbito
-              académico de los profesores de la UNEG',
+             académico de los profesores de la UNEG',
+        ]);
+
+        consejo::create([
+            'nombre' => 'Consejo universitario',
+            'descripcion' => ' Expedir y vigilar el cumplimiento de las normas y disposiciones 
+             generales encaminadas a la mejor organización y funcionamiento técnico, docente y 
+             administrativo de la Universidad Nacional Experimental de Guayana',
+        ]);
+
+        consejo::create([
+            'nombre' => 'Consejo Académico',
+            'descripcion' => 'Decidir sobre el desarrollo académico de la Institución en lo 
+             relativo a docencia, programas académicos, investigación, extensión, bienestar 
+             universitario. También sobre otros asuntos académicos que no estén atribuidos 
+             a otra autoridad institucional.',
+        ]);
+
+        consejo::create([
+            'nombre' => 'Consejo de Investigación y Postgrado',
+            'descripcion' => 'El Consejo de Investigación y Postgrado es un órgano que forma 
+             parte de la Vicerrectoría, con funciones estratégicas de análisis, evaluación y
+             proposición de políticas e instrumentos, en los ámbitos de la Investigación y
+             Creación Artística, Postgrado e Innovación.',
+        ]);
+
+        consejo::create([
+            'nombre' => 'Consejo Departamental',
+            'descripcion' => 'Son unidades organizativas funcionales cuya razón de ser es la 
+             formación, desarrollo, evaluación y promoción del personal académico, a los fines 
+             de aseurar la calidad y la pertenencia en los procesos medulares de Docencia, 
+             Investigación y Extensión, así como la gestión académico-administrativa, 
+             que demande el desarrollo de la Institución.',
         ]);
     }
 }

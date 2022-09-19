@@ -43,48 +43,52 @@ class PermisoRoleSeeder extends Seeder
         //independientemente de si pertenece o no a su consejo
         //agrega eliminar consejos
         //agregar o eliminar usuarios   
-        $permisosParticulares=[
-            "máster" => 
-                    ['asignar rol',
-                    'desasignar rol',
-                    'agregar usuario',
-                    'eliminar usuario',
-                    'agregar consejo',
-                    'eliminar consejo'
-                    ], 
-            "presidente" => 
-                    ['agregar secretario',
-                    'editar consejo'
-                    ], 
-            "secretario" => 
-                    ['agregar agenda',
-                    'editar agenda',
-                    'agregar consejero',
-                    'eliminar consejero'
-                    ], 
-            "consejero" => 
-                    ['agregar punto',
-                    ], 
+        $permisosParticulares = [
+            "master" =>
+            [
+                'asignar rol',
+                'desasignar rol',
+                'agregar usuario',
+                'eliminar usuario',
+                'agregar consejo',
+                'eliminar consejo'
+            ],
+            "presidente" =>
+            [
+                'agregar secretario',
+                'editar consejo'
+            ],
+            "secretario" =>
+            [
+                'agregar agenda',
+                'editar agenda',
+                'agregar consejero',
+                'eliminar consejero'
+            ],
+            "consejero" =>
+            [
+                'agregar punto',
+            ],
 
 
         ];
 
-        $rolesYPermisos=[
-            "máster" => array_merge(
-                $permisosParticulares['máster'],
+        $rolesYPermisos = [
+            "master" => array_merge(
+                $permisosParticulares['master'],
                 $permisosParticulares['presidente'],
                 $permisosParticulares['secretario'],
                 $permisosParticulares['consejero']
             ),
-            "presidente"=> array_merge(
+            "presidente" => array_merge(
                 $permisosParticulares['presidente'],
                 $permisosParticulares['secretario']
             ),
-            "secretario"=> array_merge(
+            "secretario" => array_merge(
                 $permisosParticulares['secretario'],
                 $permisosParticulares['consejero']
             ),
-            "consejero"=> array_merge(
+            "consejero" => array_merge(
                 $permisosParticulares['consejero']
             ),
         ];
@@ -93,8 +97,8 @@ class PermisoRoleSeeder extends Seeder
         $indicesRolesDB;
         $indicesPermisosDB;
 
-        $indiceRolDB=1;
-        $indicePermisoDB=1;
+        $indiceRolDB = 1;
+        $indicePermisoDB = 1;
 
         foreach ($permisosParticulares as $rol => $permisos) {
 
@@ -102,40 +106,31 @@ class PermisoRoleSeeder extends Seeder
                 ['nombre' => $rol]
             );
 
-            $indicesRolesDB[$rol]=$indiceRolDB;
-            
+            $indicesRolesDB[$rol] = $indiceRolDB;
+
             foreach ($permisos as $permiso) {
-    
+
                 Permiso::create(
-                    ["nombre"=>$permiso]
+                    ["nombre" => $permiso]
                 );
-                
-                $indicesPermisosDB[$permiso]=$indicePermisoDB;
+
+                $indicesPermisosDB[$permiso] = $indicePermisoDB;
 
                 $indicePermisoDB++;
-                
             }
 
-            $indiceRolDB++;           
+            $indiceRolDB++;
         }
 
 
         foreach ($rolesYPermisos as $rol => $permisos) {
-          
-            $rol=Role::find($indicesRolesDB[$rol]);
+
+            $rol = Role::find($indicesRolesDB[$rol]);
 
             foreach ($permisos as $permiso) {
 
                 $rol->permisos()->attach($indicesPermisosDB[$permiso]);
-                
-               
             }
-           
         }
-
-       
-
-        
-
     }
 }

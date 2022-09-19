@@ -19,17 +19,14 @@ class Punto extends Model
         'acuerdo_instrucciones',
         'agenda_id',
         'estado_id',
-        'ultima_actualizacion'
+        'fecha_ultima_actualizacion'
     ];
 
     public function agenda()
     {
-
     }
 
     public function estado()
     {
-
     }
-    
 }

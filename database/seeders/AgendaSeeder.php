@@ -20,7 +20,7 @@ class AgendaSeeder extends Seeder
         agenda::create([
             'id' => 1,
             'titulo' => 'Contrato transporte',
-            'consejo_is' => 1,
+            'consejo_id' => 1,
             'fecha_apertura' =>  Carbon::parse('2022-08-30'),
             'fecha_cierre' => Carbon::parse('2022-09-07'),
 
@@ -29,7 +29,7 @@ class AgendaSeeder extends Seeder
         agenda::create([
             'id' => 2,
             'titulo' => 'Presupuesto transporte',
-            'consejo_is' => 2,
+            'consejo_id' => 2,
             'fecha_apertura' =>  Carbon::parse('2022-08-30'),
             'fecha_cierre' => Carbon::parse('2022-09-07'),
 
@@ -38,7 +38,7 @@ class AgendaSeeder extends Seeder
         agenda::create([
             'id' => 3,
             'titulo' => 'Presupuesto administrativo',
-            'consejo_is' => 2,
+            'consejo_id' => 2,
             'fecha_apertura' =>  Carbon::parse('2022-09-13'),
             'fecha_cierre' => Carbon::parse('2022-09-18'),
 
@@ -47,9 +47,18 @@ class AgendaSeeder extends Seeder
         agenda::create([
             'id' => 4,
             'titulo' => 'Diplomados y postgrados disponibles',
-            'consejo_is' => 3,
+            'consejo_id' => 3,
             'fecha_apertura' =>  Carbon::parse('2022-09-20'),
             'fecha_cierre' => Carbon::parse('2022-09-29'),
+
+        ]);
+
+        agenda::create([
+            'id' => 5,
+            'titulo' => 'Recursos no utilizados',
+            'consejo_id' => 7,
+            'fecha_apertura' =>  Carbon::parse('2022-09-25'),
+            'fecha_cierre' => Carbon::parse('2022-09-28'),
 
         ]);
     }

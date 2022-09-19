@@ -14,7 +14,7 @@ class Consejo extends Model
 
     protected $fillable = [
         'id',
-        'titulo',
+        'nombre',
         'descripcion'
     ];
 
