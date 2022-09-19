@@ -40,7 +40,7 @@ class ConsejoRoleUserSeeder extends Seeder
 
         $usuarioPresidente = [
             [
-                'name' => 'Gabriel',
+                'name' => 'Gabriel Coronado',
                 'cedula' => 19804364,
                 'email' => 'gabriel@gmail.com',
                 'password' => bcrypt(19804364),
@@ -49,7 +49,7 @@ class ConsejoRoleUserSeeder extends Seeder
 
         $usuarioSecretario = [
             [
-                'name' => 'Alexei',
+                'name' => 'Alexei Hernandez',
                 'cedula' => 27219581,
                 'email' => 'alexei@gmail.com',
                 'password' => bcrypt(27219581),
@@ -59,56 +59,56 @@ class ConsejoRoleUserSeeder extends Seeder
         $usuarioConsejero = [
 
             [
-                'name' => 'Osdalys',
+                'name' => 'Osdalys Gomez',
                 'cedula' => 27077239,
                 'email' => 'osdalys@gmail.com',
                 'password' => bcrypt(27077239),
             ],
 
             [
-                'name' => 'Victor',
+                'name' => 'Victor Bolivar',
                 'cedula' => 27506373,
                 'email' => 'Oscars@gmail.com',
                 'password' => bcrypt(27506373),
             ],
 
             [
-                'name' => 'Fatima',
+                'name' => 'Fatima Ospina',
                 'cedula' => 27334025,
                 'email' => 'fatima@gmail.com',
                 'password' => bcrypt(27334025),
             ],
 
             [
-                'name' => 'Osmary',
+                'name' => 'Osmary Barriga',
                 'cedula' => 27506367,
                 'email' => 'osmary@gmail.com',
                 'password' => bcrypt(27506367),
             ],
 
             [
-                'name' => 'Carlos',
+                'name' => 'Carlos Brito',
                 'cedula' => 24559475,
                 'email' => 'carlos@gmail.com',
                 'password' => bcrypt(24559475)
             ],
 
             [
-                'name' => 'eric',
+                'name' => 'Eric Romero',
                 'cedula' => 15689584,
                 'email' => 'eric@gmail.com',
                 'password' => bcrypt(15689584),
             ],
 
             [
-                'name' => 'Genesis',
+                'name' => 'Genesis Sanchez',
                 'cedula' =>  26138853,
                 'email' => 'genesis@gmail.com',
                 'password' => bcrypt(26138853),
             ],
 
             [
-                'name' => 'Roxana',
+                'name' => 'Roxana Salazar',
                 'cedula' => 25935452,
                 'email' => 'roxana@gmail.com',
                 'password' => bcrypt(25395452)
@@ -120,6 +120,7 @@ class ConsejoRoleUserSeeder extends Seeder
         $indiceUserDB = 1;
         $indiceConsejoDB = 1;
 
+        //Creacion de usuarios Master
         foreach ($usuariosMaster as $user) {
 
             User::create(
@@ -130,6 +131,43 @@ class ConsejoRoleUserSeeder extends Seeder
 
             $indiceUserDB++;
         }
+
+        //Creacion de Usuarios Presidente
+        foreach ($usuarioPresidente as $user) {
+
+            User::create(
+                $user
+            );
+
+            $indicesUsersDB[$user['name']] = $indiceUserDB;
+
+            $indiceUserDB++;
+        }
+
+        //Creacion de Usuarios Secretario
+        foreach ($usuarioSecretario as $user) {
+
+            User::create(
+                $user
+            );
+
+            $indicesUsersDB[$user['name']] = $indiceUserDB;
+
+            $indiceUserDB++;
+        }
+
+        //Creacion de Usuarios Consejero
+        foreach ($usuarioConsejero as $user) {
+
+            User::create(
+                $user
+            );
+
+            $indicesUsersDB[$user['name']] = $indiceUserDB;
+
+            $indiceUserDB++;
+        }
+
 
         foreach ($consejos as $consejo) {
 
@@ -147,7 +185,7 @@ class ConsejoRoleUserSeeder extends Seeder
 
         /*  foreach ($usuariosMaster as $rol => $permisos) {
           
-            $rol=User::find($indicesRolesDB[$rl]);
+            $rol=User::find($indicesRolesDB[$rol]);
 
             foreach ($permisos as $permiso) {
 
