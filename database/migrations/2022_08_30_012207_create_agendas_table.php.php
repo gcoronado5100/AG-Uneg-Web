@@ -16,11 +16,12 @@ return new class extends Migration
         Schema::create('agendas', function (Blueprint $table) {
             $table->id();
             $table->string('titulo');
-            $table->unsignedBigInteger('consejo_id');
-            $table->foreign('consejo_id')->references('id')->on('consejos');
             $table->date('fecha_apertura');
             $table->date('fecha_cierre');
+            $table->unsignedBigInteger('consejo_id');
             $table->timestamps();
+
+            $table->foreign('consejo_id')->references('id')->on('consejos');
         });
     }
 

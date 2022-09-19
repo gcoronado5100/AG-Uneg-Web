@@ -34,15 +34,15 @@ class PermisoRoleSeeder extends Seeder
         //Presidente
         //mismo secretario
         //edita consejo
-        //agregar secretario dice de los que pertenecen al consejo 
+        //agregar secretario dice de los que pertenecen al consejo
         //pero creo que deberia de ser como hace el secretario
 
         //master
         //mismo presidente
-        //agrega o elimina rol para un usuario 
+        //agrega o elimina rol para un usuario
         //independientemente de si pertenece o no a su consejo
         //agrega eliminar consejos
-        //agregar o eliminar usuarios   
+        //agregar o eliminar usuarios
         $permisosParticulares = [
             "master" =>
             [

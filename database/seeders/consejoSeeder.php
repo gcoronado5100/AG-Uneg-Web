@@ -6,7 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Consejo;
 
-class consejoSeeder extends Seeder
+class ConsejoSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -36,14 +36,20 @@ class consejoSeeder extends Seeder
 
         consejo::create([
             'nombre' => 'Consejo universitario',
-            'descripcion' => ' Expedir y vigilar el cumplimiento de las normas y disposiciones 
+            'descripcion' => ' Es la autoridad suprema de la Universidad y ejerce las funciones
+            de gobierno universitario por órgano del Rector, los Vicerrectores y el Secretario,
+            conforme a sus respectiva atribuciones.
+             Expedir y vigilar el cumplimiento de las normas y disposiciones 
              generales encaminadas a la mejor organización y funcionamiento técnico, docente y 
              administrativo de la Universidad Nacional Experimental de Guayana',
         ]);
 
         consejo::create([
             'nombre' => 'Consejo Académico',
-            'descripcion' => 'Decidir sobre el desarrollo académico de la Institución en lo 
+            'descripcion' => 'Es la autoridad académica de la Universidad, órgano asesor del
+            Rector y tiene entre sus tareas la de conceptuar ante el Consejo Superior, sobre
+            la creación, modificación o supresión de unidades académicas. 
+            Decidir sobre el desarrollo académico de la Institución en lo 
              relativo a docencia, programas académicos, investigación, extensión, bienestar 
              universitario. También sobre otros asuntos académicos que no estén atribuidos 
              a otra autoridad institucional.',

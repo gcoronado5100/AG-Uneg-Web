@@ -19,17 +19,10 @@ class DatabaseSeeder extends Seeder
         $this->call([
             PermisoRoleSeeder::class,
             ConsejoRoleUserSeeder::class,
-            consejoSeeder::class,
             AgendaSeeder::class,
             PuntosSeeder::class,
             EstadosSeeder::class,
             ConsejoPuntosSeeder::class
         ]);
-
-        //$admin = \App\Models\User::factory(10)->create();
-        //$user = \App\Models\User::factory(10)->create();
-
-        //\App\Models\Consejo::factory(20)->create();
-
     }
 }

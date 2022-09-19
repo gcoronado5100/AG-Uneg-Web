@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Estado;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Estado;
 
 class EstadosSeeder extends Seeder
 {
@@ -15,19 +16,31 @@ class EstadosSeeder extends Seeder
      */
     public function run()
     {
-        estado::create([
-            'id' => 1,
-            'estado' => 'Creada'
-        ]);
+        Estado::create(
+            [
+                'id' => 1,
+                'estado' => 'Aprobado',
+            ],
 
-        estado::create([
-            'id' => 2,
-            'estado' => 'Activa'
-        ]);
+            [
+                'id' => 2,
+                'estado' => 'Diferido',
+            ],
 
-        estado::create([
-            'id' => 3,
-            'estado' => 'Finalizada'
-        ]);
+            [
+                'id' => 3,
+                'estado' => 'Diferido virtual',
+            ],
+
+            [
+                'id' => 4,
+                'estado' => 'Rechazado',
+            ],
+
+            [
+                'id' => 5,
+                'estado' => 'Retirado',
+            ]
+        );
     }
 }
