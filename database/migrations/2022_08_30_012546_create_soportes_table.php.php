@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('soportes', function (Blueprint $table) {
             $table->id();
-            $table->string('soporte_url')->unique();
+            $table->string('nombre')->unique();
             $table->unsignedBigInteger('punto_id');
             $table->timestamps();
 
