@@ -55,7 +55,7 @@ class AgendaSeeder extends Seeder
             ]
         );
 
-        agenda::create([
+        Agenda::create([
             'id' => 5,
             'titulo' => 'Recursos no utilizados',
             'consejo_id' => 7,

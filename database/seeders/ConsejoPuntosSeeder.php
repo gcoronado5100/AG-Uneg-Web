@@ -2,9 +2,9 @@
 
 namespace Database\Seeders;
 
-use App\Models\Consejo_Punto;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\ConsejoPunto;
 
 class ConsejoPuntosSeeder extends Seeder
 {
@@ -15,10 +15,16 @@ class ConsejoPuntosSeeder extends Seeder
      */
     public function run()
     {
-        /*Consejo_Punto::create([
+        ConsejoPunto::create([
             'id' => 1,
             'consejo_id' => 7,
             'punto_id' => 1,
-        ]);*/
+        ]);
+
+        ConsejoPunto::create([
+            'id' => 2,
+            'consejo_id' => 3,
+            'punto_id' => 1,
+        ]);
     }
 }
