@@ -15,7 +15,7 @@ class ConsejoPuntosSeeder extends Seeder
      */
     public function run()
     {
-        /*Consejo_Punto::crteate([
+        /*Consejo_Punto::create([
             'id' => 1,
             'consejo_id' => 7,
             'punto_id' => 1,

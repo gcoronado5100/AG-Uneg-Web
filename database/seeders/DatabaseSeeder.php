@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
             AgendaSeeder::class,
             PuntosSeeder::class,
             EstadosSeeder::class,
-            ConsejoPuntosSeeder::class
+            //ConsejoPuntosSeeder::class
         ]);
     }
 }
