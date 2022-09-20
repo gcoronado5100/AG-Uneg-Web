@@ -17,43 +17,41 @@ class AgendaSeeder extends Seeder
      */
     public function run()
     {
-        Agenda::create(
-            [
-                'id' => 1,
-                'titulo' => 'Contrato transporte',
-                'consejo_id' => 1,
-                'fecha_apertura' =>  Carbon::parse('2022-08-30'),
-                'fecha_cierre' => Carbon::parse('2022-09-07'),
+        Agenda::create([
+            'id' => 1,
+            'titulo' => 'Contrato transporte',
+            'consejo_id' => 1,
+            'fecha_apertura' =>  Carbon::parse('2022-08-30'),
+            'fecha_cierre' => Carbon::parse('2022-09-07'),
 
-            ],
+        ]);
 
-            [
-                'id' => 2,
-                'titulo' => 'Presupuesto transporte',
-                'consejo_id' => 2,
-                'fecha_apertura' =>  Carbon::parse('2022-08-30'),
-                'fecha_cierre' => Carbon::parse('2022-09-07'),
+        Agenda::create([
+            'id' => 2,
+            'titulo' => 'Presupuesto transporte',
+            'consejo_id' => 2,
+            'fecha_apertura' =>  Carbon::parse('2022-08-30'),
+            'fecha_cierre' => Carbon::parse('2022-09-07'),
 
-            ],
+        ]);
 
-            [
-                'id' => 3,
-                'titulo' => 'Presupuesto administrativo',
-                'consejo_id' => 2,
-                'fecha_apertura' =>  Carbon::parse('2022-09-13'),
-                'fecha_cierre' => Carbon::parse('2022-09-18'),
+        Agenda::create([
+            'id' => 3,
+            'titulo' => 'Presupuesto administrativo',
+            'consejo_id' => 2,
+            'fecha_apertura' =>  Carbon::parse('2022-09-13'),
+            'fecha_cierre' => Carbon::parse('2022-09-18'),
 
-            ],
+        ]);
 
-            [
-                'id' => 4,
-                'titulo' => 'Diplomados y postgrados disponibles',
-                'consejo_id' => 3,
-                'fecha_apertura' =>  Carbon::parse('2022-09-20'),
-                'fecha_cierre' => Carbon::parse('2022-09-29'),
+        Agenda::create([
+            'id' => 4,
+            'titulo' => 'Diplomados y postgrados disponibles',
+            'consejo_id' => 3,
+            'fecha_apertura' =>  Carbon::parse('2022-09-20'),
+            'fecha_cierre' => Carbon::parse('2022-09-29'),
 
-            ]
-        );
+        ]);
 
         Agenda::create([
             'id' => 5,

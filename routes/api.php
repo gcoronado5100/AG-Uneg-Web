@@ -20,23 +20,23 @@ use App\Http\Controllers\ConsejoRoleUserController;
 
 //-------------------------------
 
-    //MODELOS
-    Route::apiResource('/agendas', AgendaController::class)->middleware('auth:api');
-    Route::apiResource('/consejos', ConsejoController::class)->middleware('auth:api');
-    Route::apiResource('/consejo_punto', ConsejoPuntoController::class)->middleware('aauth:api');
-    
-    Route::apiResource('/estados', EstadoController::class)->middleware('auth:api');
-    Route::apiResource('/puntos', PuntoController::class)->middleware('auth:api');
-    Route::apiResource('/soportes', SoporteController::class)->middleware('auth:api');
-    
-    Route::apiResource('/users', UserController::class)->middleware('auth:api');
-    Route::apiResource('/consejo-role-user', ConsejoRoleUserController::class)->middleware('auth:api');
+//MODELOS
+Route::apiResource('/agendas', AgendaController::class)->middleware('auth:api');
+Route::apiResource('/consejos', ConsejoController::class)->middleware('auth:api');
+Route::apiResource('/consejo_punto', ConsejoPuntoController::class)->middleware('aauth:api');
 
-    //AUTH
-    Route::group(['prefix' => 'auth'], function ($router) {
-        Route::post('register', [AuthController::class, 'register']);
-        Route::post('login', [AuthController::class, 'login']);
-        Route::post('logout', [AuthController::class, 'logout']);
-        Route::post('refresh', [AuthController::class, 'refresh']);
-        Route::post('me', [AuthController::class, 'me']);
-    });
+Route::apiResource('/estados', EstadoController::class)->middleware('auth:api');
+Route::apiResource('/puntos', PuntoController::class)->middleware('auth:api');
+Route::apiResource('/soportes', SoporteController::class)->middleware('auth:api');
+
+Route::apiResource('/users', UserController::class)->middleware('auth:api');
+Route::apiResource('/consejo-role-user', ConsejoRoleUserController::class)->middleware('auth:api');
+
+//AUTH
+Route::group(['prefix' => 'auth'], function ($router) {
+    Route::post('register', [AuthController::class, 'register']);
+    Route::post('login', [AuthController::class, 'login']);
+    Route::post('logout', [AuthController::class, 'logout']);
+    Route::post('refresh', [AuthController::class, 'refresh']);
+    Route::post('me', [AuthController::class, 'me']);
+});
