@@ -5,25 +5,27 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-use App\Models\User;
-use App\Models\Permiso;
+use App\Models\PermisoRole;
+use App\Models\ConsejoRoleUser;
 
 class Role extends Model
 {
     use HasFactory;
 
+    protected $table = "roles";
+    protected $primaryKey = "id";
+
     protected $fillable = [
-        'nombre'
+        'nombre',
     ];
 
-    public function usuarios()
+    public function permiso_role()
     {
-        return $this->belongsToMany(User::class, 'consejo_role_permiso');
+        return $this->belongsTo(PermisoRole::class, 'role_id');
     }
 
-
-    public function permisos()
+    public function consejo_user()
     {
-        return $this->belongsToMany(Permiso::class, 'permiso_role');
+        return $this->belongsTo(ConsejoRoleUser::class, 'role_id');
     }
 }

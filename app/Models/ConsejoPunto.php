@@ -5,6 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+use App\Models\Consejo;
+use App\Models\Punto;
+
 class ConsejoPunto extends Model
 {
     use HasFactory;
@@ -18,11 +21,13 @@ class ConsejoPunto extends Model
         'punto_id',
     ];
 
-    public function consejo()
+    public function consejos()
     {
+        return $this->hasMany(Consejo::class, 'consejo_id');
     }
 
-    public function punto()
+    public function puntos()
     {
+        return $this->hasMany(Punto::class, 'punto_id');
     }
 }

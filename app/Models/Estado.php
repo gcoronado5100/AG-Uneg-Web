@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+use App\Models\Punto;
+
 class Estado extends Model
 {
     use HasFactory;
@@ -16,4 +18,9 @@ class Estado extends Model
         'id',
         'estado',
     ];
+
+    public function punto()
+    {
+        return $this->belongsTo(Punto::class, 'estado_id');
+    }
 }

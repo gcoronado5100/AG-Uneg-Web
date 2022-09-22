@@ -25,7 +25,7 @@ class DatabaseSeeder extends Seeder
             PuntosSeeder::class,
             SoportesSeeder::class,
             ConsejoPuntosSeeder::class,
-            consejoRolesSeeder::class
+            ConsejoRolesSeeder::class
         ]);
     }
 }

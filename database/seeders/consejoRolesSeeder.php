@@ -6,7 +6,7 @@ use App\Models\ConsejoRoleUser;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class consejoRolesSeeder extends Seeder
+class ConsejoRolesSeeder extends Seeder
 {
     /**
      * Run the database seeds.

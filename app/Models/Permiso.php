@@ -5,19 +5,22 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-use App\Models\Role;
+use App\Models\PermisoRole;
 
 class Permiso extends Model
 {
     use HasFactory;
 
+    protected $table = "permisos";
+    protected $primaryKey = "id";
+
     protected $fillable = [
-        'nombre'
+        'nombre',
     ];
 
-    public function roles()
+    public function permiso_role()
     {
-        return $this->belongsToMany(Role::class, 'permiso_role');
+        return $this->belongsTo(PermisoRole::class, 'permiso_id');
     }
 
 }

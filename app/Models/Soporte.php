@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+use App\Models\Punto;
+
 class Soporte extends Model
 {
     use HasFactory;
@@ -18,8 +20,8 @@ class Soporte extends Model
         'punto_id',
     ];
 
-    public function punto()
+    public function puntos()
     {
-        
+        return $this->hasMany(Punto::class, 'punto_id');
     }
 }
