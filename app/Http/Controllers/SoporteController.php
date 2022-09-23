@@ -12,9 +12,13 @@ class SoporteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($request)
     {
-        return Soporte::all();
+        if($request['cantidadElementos']){
+            return Soporte::paginate($request['cantidadElementos']);
+        }else{
+            return Soporte::paginate();
+        }
     }
 
     /**

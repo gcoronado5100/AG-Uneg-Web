@@ -18,9 +18,17 @@ class Permiso extends Model
         'nombre',
     ];
 
-    public function permiso_role()
+    public function roles(){
+        return $this->belongsToMany(Role::class, 'permiso_role');
+    }
+
+    //no se porque quitaron lo que yo puse
+    //lo de abajo lo quite y lo puse como yo lo habia dejado 
+    //porque creo que esta mal porque un permiso puede pertenecer a muchos roles
+    //en cambio lo de abajo dice que a un permiso solo le pertenece un role_permiso
+   /*  public function permiso_role()
     {
         return $this->belongsTo(PermisoRole::class, 'permiso_id');
-    }
+    } */
 
 }

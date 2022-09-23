@@ -16,6 +16,14 @@ class ConsejoSeeder extends Seeder
     public function run()
     {
         Consejo::create([
+                'id' => 1,
+                'nombre' => 'Consejo Administrativo',
+                'descripcion' => 'Este consejo se encarga de gestionar y organizar todo lo referente
+                al area administrativa de la Universidad Nacional Experimental de Guayana',
+        
+        ]);
+
+        Consejo::create([
             'id' => 2,
             'nombre' => ' Consejo de Transporte',
             'descripcion' => 'Este consejo se encarga de gestionar y organizar todo lo referente

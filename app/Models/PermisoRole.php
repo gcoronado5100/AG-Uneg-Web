@@ -1,4 +1,6 @@
 <?php
+/*Todo este bloque de comentario creo que esta mal
+
 
 namespace App\Models;
 
@@ -30,3 +32,5 @@ class PermisoRole extends Model
         return $this->hasMany(Role::class, 'role_id');
     }
 }
+*/
+ 

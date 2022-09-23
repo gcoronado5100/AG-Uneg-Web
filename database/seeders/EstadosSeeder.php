@@ -39,5 +39,10 @@ class EstadosSeeder extends Seeder
             'id' => 5,
             'estado' => 'Retirado',
         ]);
+
+        Estado::create([
+            'id' => 6,
+            'estado' => 'Informado',
+        ]);
     }
 }

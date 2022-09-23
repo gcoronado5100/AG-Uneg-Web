@@ -28,7 +28,7 @@ class Agenda extends Model
         return $this->hasMany(Consejo::class, 'consejo_id');
     }
 
-    public function punto()
+    public function puntos()
     {
         return $this->belongsTo(Punto::class, 'agenda_id');
     }

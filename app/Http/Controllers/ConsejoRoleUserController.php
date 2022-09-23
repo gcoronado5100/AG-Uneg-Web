@@ -95,7 +95,7 @@ class ConsejoRoleUserController extends Controller
                 [
                     'message' => 'A traves de esta accion no puede asignar el rol que desee',
                 ]
-            ,401);
+            ,400);
 
         }
 

@@ -12,9 +12,44 @@ class AgendaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        return Agenda::all();
+    public function index(Request $request)
+    {        
+        if (
+            $request['orden']!=NULL 
+            && $request['orden']!='asc' && $request['orden']!='desc'
+        ){
+            return response()->json(
+                [
+                    'message' => 'el parametro orden solo puede ser asc o desc',
+                ]
+            ,400);
+        }
+
+        if (
+            $request['estado']!=NULL 
+            && $request['estado']!='abierta' && $request['estado']!='cerrada'
+        ){
+            return response()->json(
+                [
+                    'message' => 'el parametro estado solo puede ser abierta o cerrada',
+                ]
+            ,400);
+        }
+
+        if($request['estado']=='abierta'){
+            $agendas=Agenda::where('fecha_cierre',"=",NULL);
+        } else{
+            $agendas=Agenda::where('fecha_cierre',"!=",NULL);
+        }
+
+        if($request['orden']=='desc'){
+             $agendas=$agendas->orderBy('fecha_apertura', $request['orden']);
+        }
+
+        $agendas=$agendas->paginate($request['cantidadElementos']);
+
+        return $agendas;
+
     }
 
     /**
@@ -66,4 +101,5 @@ class AgendaController extends Controller
         $agenda->delete();
         return $agenda;
     }
+
 }

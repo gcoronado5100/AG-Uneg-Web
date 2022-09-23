@@ -17,9 +17,23 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return User::all();
+        if ($request['orden']!=NULL && $request['orden']!='asc' && $request['orden']!='desc'){
+            return response()->json(
+                [
+                    'message' => 'el parametro orden solo puede ser asc o desc',
+                ]
+            ,400);
+        }
+
+        if($request['orden']!=NULL&&$request['cantidadElementos']!=NULL)
+        {
+            return User::paginate($request['cantidadElementos']);
+        }else{
+            return User::paginate();
+        }
+
     }
 
     /**
