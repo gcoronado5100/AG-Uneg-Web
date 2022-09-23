@@ -62,9 +62,13 @@ class UserController extends Controller
             return response()->json($validator->errors()->toJson(), 400);
         }
 
+        $path = $request->file('avatar')->storeAs('/perfiles', $request->user()->cedula);
+        
+
         $user = User::create(array_merge (
             $validator->validate(),
-            ['password' => bcrypt($request->cedula)]
+            ['password' => bcrypt($request->cedula)],
+            ['url_foto_perfil'=>$path]
         ));
 
         return response()->json([

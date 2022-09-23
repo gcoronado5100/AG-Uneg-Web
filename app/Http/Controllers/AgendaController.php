@@ -60,8 +60,38 @@ class AgendaController extends Controller
      */
     public function store(Request $request)
     {
+
         $agenda = Agenda::create($request->all());
         return $agenda;
+
+        // if(!userCan(auth()->user()['id'],"agregar agenda")){
+        //     return response()->json(
+        //         [
+        //             'message' => 'No tienes el permiso para hacer esto',
+        //         ]
+        //         ,401);
+        // }
+
+        // $validator = Validator::make(request()->all(), [
+        //     'titulo' => 'required|string|max:50',
+        //     'consejo_id' => 'required|numeric|digits_between:6,8|unique:users,cedula',
+        //     'fecha_apertura' => 'required|date',
+        // ]);
+
+        // if ($validator->fails()) {
+        //     return response()->json($validator->errors()->toJson(), 400);
+        // }
+
+        // $user = User::create(array_merge (
+        //     $validator->validate(),
+        //     ['password' => bcrypt($request->cedula)]
+        // ));
+
+        // return response()->json([
+        //     'message' => 'User created successfully',
+        //     'data' => $user
+        // ]);
+    
     }
 
     /**

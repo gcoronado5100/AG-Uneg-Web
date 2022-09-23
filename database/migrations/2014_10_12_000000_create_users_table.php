@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 return new class extends Migration
 {
@@ -18,8 +18,12 @@ return new class extends Migration
             $table->string('name');
             $table->string('cedula')->unique();
             $table->string('email')->unique();
+            $table->string('telefono')->nullable();
+            $table->enum("genero", ["Masculino", "Femenino", "Prefiero no especificar"]);
+            $table->date('fecha_nacimiento');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string("url_foto_perfil")->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

@@ -17,6 +17,7 @@ use App\Models\Role;
 use App\Models\Permiso;
 
 use App\Http\Controllers\ConsejoRoleUserController;
+use Illuminate\Support\Facades\Storage;
 
 //-------------------------------
 
@@ -44,4 +45,6 @@ Route::group(['prefix' => 'auth'], function ($router) {
 
 //Fin Parte israel 
 
-//Route::get('prueba', [UserController::class, 'index']);
+Route::get('prueba', function () {
+    return Storage::url('app/public/perfile/19804364.jpg');
+});
