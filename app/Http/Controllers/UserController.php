@@ -56,17 +56,39 @@ class UserController extends Controller
             'name' => 'required|string|max:50',
             'cedula' => 'required|numeric|digits_between:6,8|unique:users,cedula',
             'email' => 'required|string|email|max:255|unique:users',
+            'telefono' => 'string|max:255',
+            'fecha_nacimiento' => 'required|date',
         ]);
 
         if ($validator->fails()) {
             return response()->json($validator->errors()->toJson(), 400);
         }
 
-        $path = $request->file('avatar')->storeAs('/perfiles', $request->user()->cedula);
+        if($request->genero && $request->genero!="Masculino" && $request->genero!="Femenino" && $request->genero!="Prefiero no especificar" ){
+            return response()->json(
+                [
+                    'message' => 'el parametro genero solo puede ser Masculino, Femenino o Prefiero no especificar',
+                ]
+            ,400);
+        }
+
+    $nombreArchivo=$request->cedula.".".$request->file('avatar')->extension();
+
+        $path = $request->file('avatar')->storeAs('public/perfiles', $nombreArchivo);
+
+        if(!$path)
+        {
+            return response()->json(
+                [
+                    'message' => 'error subiendo archivo '.$nombreArchivo
+                ]
+            ,400);
+        }
         
 
         $user = User::create(array_merge (
             $validator->validate(),
+            ['genero' => $request->genero],
             ['password' => bcrypt($request->cedula)],
             ['url_foto_perfil'=>$path]
         ));

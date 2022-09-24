@@ -130,7 +130,6 @@ class AuthController extends Controller
 
     public function register(Request $request)
     {
-
         if(!userCan(auth()->user()['id'],"agregar usuario")){
             return response()->json(
                 [
@@ -143,20 +142,47 @@ class AuthController extends Controller
             'name' => 'required|string|max:50',
             'cedula' => 'required|numeric|digits_between:6,8|unique:users,cedula',
             'email' => 'required|string|email|max:255|unique:users',
+            'telefono' => 'string|max:255',
+            'fecha_nacimiento' => 'required|date',
         ]);
 
         if ($validator->fails()) {
             return response()->json($validator->errors()->toJson(), 400);
         }
 
+        if($request->genero && $request->genero!="Masculino" && $request->genero!="Femenino" && $request->genero!="Prefiero no especificar" ){
+            return response()->json(
+                [
+                    'message' => 'el parametro genero solo puede ser Masculino, Femenino o Prefiero no especificar',
+                ]
+            ,400);
+        }
+
+    $nombreArchivo=$request->cedula.".".$request->file('avatar')->extension();
+
+        $path = $request->file('avatar')->storeAs('public/perfiles', $nombreArchivo);
+
+        if(!$path)
+        {
+            return response()->json(
+                [
+                    'message' => 'error subiendo archivo '.$nombreArchivo
+                ]
+            ,400);
+        }
+        
+
         $user = User::create(array_merge (
             $validator->validate(),
-            ['password' => bcrypt($request->cedula)]
+            ['genero' => $request->genero],
+            ['password' => bcrypt($request->cedula)],
+            ['url_foto_perfil'=>$path]
         ));
 
         return response()->json([
             'message' => 'User created successfully',
             'data' => $user
         ]);
+    
     }
 }
