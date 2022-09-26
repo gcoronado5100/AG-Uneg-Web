@@ -29,6 +29,15 @@ class UserSeeder extends Seeder
                 "fecha_nacimiento"=>'2000-03-18',
                 "url_foto_perfil"=>'/storage/perfiles/28031021.jpg',
 
+            ],[
+                "name" => "Alejandro Esteban Marcus Martinez",
+                "email" => "amarcus.tareas@yahoo.com.ve",
+                'cedula' => 13837512,
+                'genero' => 'Masculino',
+                'password' => bcrypt(13837512),
+                "fecha_nacimiento"=>'1971-04-05',
+                "url_foto_perfil"=>'/storage/perfiles/perfil_defecto.jpg',
+
             ],
 
         ];

@@ -24,6 +24,12 @@ class ConsejoRoleUserSeeder extends Seeder
         ]);
 
         ConsejoRoleUser::create([
+            'consejo_id' => NULL,
+            'role_id' => 1,
+            'user_id' => 2,
+        ]);
+
+        ConsejoRoleUser::create([
             'consejo_id' => 1,
             'role_id' => 2,
             'user_id' => 3,
@@ -52,12 +58,6 @@ class ConsejoRoleUserSeeder extends Seeder
             'consejo_id' => 1,
             'role_id' => 4,
             'user_id' => 9,
-        ]);
-
-        ConsejoRoleUser::create([
-            'consejo_id' => 6,
-            'role_id' => 2,
-            'user_id' => 2,
         ]);
 
         ConsejoRoleUser::create([
